@@ -1,11 +1,6 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Weffc++"
 #include "qtdialog.h"
-
-#include <string>
-
-#include <boost/lexical_cast.hpp>
-
 #include "ui_qtdialog.h"
 #pragma GCC diagnostic pop
 
@@ -32,13 +27,7 @@ QtDialog::QtDialog(QWidget *parent) :
         i->setFlags(
             Qt::ItemIsSelectable
           | Qt::ItemIsUserCheckable
-          //| Qt::ItemIsEnabled
         );
-        //i->setFlags(
-        //    Qt::ItemIsSelectable
-        //  | Qt::ItemIsUserCheckable
-        //  | Qt::ItemIsEnabled
-        //);
         i->setCheckState(Qt::Unchecked);
       }
       else
@@ -48,13 +37,13 @@ QtDialog::QtDialog(QWidget *parent) :
             Qt::ItemIsSelectable
           | Qt::ItemIsEditable
           | Qt::ItemIsEnabled);
-        std::string s;
+        QString s;
         for (int sub_row=0;sub_row!=row; ++sub_row)
         {
-          s += boost::lexical_cast<std::string>(sub_row) + "\n";
+          s += QString::number(sub_row) + "\n";
         }
-        if (!s.empty()) s.resize(s.size() - 1);
-        i->setText(s.c_str());
+        if (!s.isEmpty()) s.resize(s.size() - 1);
+        i->setText(s);
       }
       t->setItem(row, col, i);
     }

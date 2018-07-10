@@ -17,6 +17,3 @@ HEADERS  += \
 
 FORMS    += \
     qtdialog.ui
-
-RESOURCES += \
-    CppQTableWidgetExample3.qrc
